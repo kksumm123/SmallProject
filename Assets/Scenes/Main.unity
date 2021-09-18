@@ -220,12 +220,12 @@ GameObject:
   - component: {fileID: 1425831356}
   - component: {fileID: 1425831355}
   - component: {fileID: 1425831354}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1425831351
 Transform:
@@ -1954,12 +1954,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1697812378}
   - component: {fileID: 1697812379}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1697812378
 Transform:
@@ -2036,7 +2036,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5896930517237938848, guid: 8c1fa77ce8ce5e243bd5661f3500215c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.08
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5896930517237938848, guid: 8c1fa77ce8ce5e243bd5661f3500215c, type: 3}
       propertyPath: m_LocalPosition.z

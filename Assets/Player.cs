@@ -8,8 +8,8 @@ public class Player : MonoBehaviour
     Animator animator;
     BoxCollider2D boxCol;
     Rigidbody2D rigid;
-    float speed = 5f;
-
+    [SerializeField] float speed = 5f;
+    float gravityScale = 4;
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         footOffset = boxCol.size.y * 0.5f - boxCol.offset.y;
         groundLayer = 1 << LayerMask.NameToLayer("Ground");
+        rigid.gravityScale = gravityScale;
 
         State = StateType.Idle;
     }
@@ -43,13 +44,12 @@ public class Player : MonoBehaviour
     {
         if (IsFixedUpdated == false)
             return;
-
         var velo = rigid.velocity;
         if (IsGround())
             State = StateType.Running;
-        else if (velo.y > 0)
+        else if (velo.y > 0.1f)
             State = StateType.Jump;
-        else if (velo.y < 0)
+        else if (velo.y < -0.1f)
             State = StateType.Fall;
     }
 
@@ -57,8 +57,8 @@ public class Player : MonoBehaviour
     LayerMask groundLayer;
     bool IsGround()
     {
-       var hit = Physics2D.Raycast(transform.position + new Vector3(0, footOffset, 0)
-            , Vector2.down, 0.1f, groundLayer);
+        var hit = Physics2D.Raycast(transform.position - new Vector3(0, footOffset, 0)
+             , Vector2.down, 0.1f, groundLayer);
         return hit.transform;
     }
     #endregion StateUpdate
@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
     #endregion Move
 
     #region Jump
-    float jumpForceY;
+    [SerializeField] float jumpForceY = 600;
     void Jump()
     {
         if (GKD(KeyCode.W) && IsGround())
@@ -113,4 +113,12 @@ public class Player : MonoBehaviour
     bool GK(KeyCode _keycode) => Input.GetKey(_keycode);
     bool GKD(KeyCode _keycode) => Input.GetKeyDown(_keycode);
     #endregion Methods
+
+    private void OnDrawGizmos()
+    {
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position - new Vector3(0, footOffset, 0)
+            , Vector2.down * 0.1f);
+    }
 }
