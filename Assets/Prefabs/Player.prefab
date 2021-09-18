@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5896930516342285652}
   - component: {fileID: 5896930516342285653}
   - component: {fileID: 5896930516342285658}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: UnitychanMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,9 +114,9 @@ GameObject:
   - component: {fileID: 5896930517237938849}
   - component: {fileID: 5896930517237938854}
   - component: {fileID: 2186018933020769513}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -196,6 +196,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  currentJumpCount: 0
   maxJumpCount: 2
   jumpForceY: 700
