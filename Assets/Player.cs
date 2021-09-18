@@ -2,7 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+/*
+Order In Layer
 
+
+Coin    50
+
+Player  100
+ */
 public class Player : MonoBehaviour
 {
     Animator animator;
