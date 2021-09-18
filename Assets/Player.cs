@@ -54,11 +54,12 @@ public class Player : MonoBehaviour
     }
 
     float footOffset;
+    float IsGroundRayDistance = 0.01f;
     LayerMask groundLayer;
     bool IsGround()
     {
         var hit = Physics2D.Raycast(transform.position - new Vector3(0, footOffset, 0)
-             , Vector2.down, 0.1f, groundLayer);
+             , Vector2.down, IsGroundRayDistance, groundLayer);
         return hit.transform;
     }
     #endregion StateUpdate
@@ -71,13 +72,20 @@ public class Player : MonoBehaviour
     #endregion Move
 
     #region Jump
+    int currentJumpCount = 0;
+    [SerializeField] int maxJumpCount = 2;
     [SerializeField] float jumpForceY = 600;
     void Jump()
     {
-        if (GKD(KeyCode.W) && IsGround())
+        if (IsGround() && IsFixedUpdated)
+            currentJumpCount = 0;
+
+        if (GKD(KeyCode.W) && currentJumpCount < maxJumpCount)
         {
+            currentJumpCount++;
             State = StateType.Jump;
             IsFixedUpdated = false;
+            rigid.Sleep();
             rigid.AddForce(new Vector2(0, jumpForceY), ForceMode2D.Force);
         }
     }
@@ -119,6 +127,6 @@ public class Player : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position - new Vector3(0, footOffset, 0)
-            , Vector2.down * 0.1f);
+            , Vector2.down * IsGroundRayDistance);
     }
 }
