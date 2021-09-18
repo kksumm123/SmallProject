@@ -18,17 +18,9 @@ public class Player : MonoBehaviour
     }
 
     #region Move
-    Vector2 move;
     void Move()
     {
-        move = Vector2.zero;
-        if (GK(KeyCode.A)) move.x = -1;
-        if (GK(KeyCode.D)) move.x = 1;
-
-        if (move != Vector2.zero)
-        {
-            transform.Translate(speed * Time.deltaTime * move);
-        }
+        transform.Translate(speed * Time.deltaTime * Vector2.right);
     }
     #endregion Move
 
