@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,6 +52,7 @@ public class Player : MonoBehaviour
 
             print($"PlayerState : {m_state} -> {value}");
             m_state = value;
+            animator.Play(m_state.ToString());
         }
     }
     #endregion State
