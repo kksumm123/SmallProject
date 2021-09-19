@@ -12,6 +12,9 @@ Player  100
  */
 public class Player : MonoBehaviour
 {
+    public static Player Instance;
+    void Awake() => Instance = this;
+
     Animator animator;
     BoxCollider2D boxCol;
     Rigidbody2D rigid;

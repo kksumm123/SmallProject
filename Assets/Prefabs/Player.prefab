@@ -114,8 +114,6 @@ GameObject:
   - component: {fileID: 5896930517237938849}
   - component: {fileID: 5896930517237938854}
   - component: {fileID: 2186018933020769513}
-  - component: {fileID: 896978267}
-  - component: {fileID: 3164440995026400037}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -135,6 +133,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5896930516342285652}
+  - {fileID: 5896930517152378782}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -200,31 +199,65 @@ MonoBehaviour:
   speed: 5
   maxJumpCount: 2
   jumpForceY: 700
---- !u!58 &896978267
-CircleCollider2D:
+--- !u!1001 &1000985010967448520
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5896930517237938855}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
---- !u!114 &3164440995026400037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_Modification:
+    m_TransformParent: {fileID: 5896930517237938848}
+    m_Modifications:
+    - target: {fileID: 6643422563398820949, guid: 3ee1e6227cc053643a2bd277f9579e52, type: 3}
+      propertyPath: m_Name
+      value: MagneticAbility
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643422563398820950, guid: 3ee1e6227cc053643a2bd277f9579e52, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643422563398820950, guid: 3ee1e6227cc053643a2bd277f9579e52, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643422563398820950, guid: 3ee1e6227cc053643a2bd277f9579e52, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643422563398820950, guid: 3ee1e6227cc053643a2bd277f9579e52, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643422563398820950, guid: 3ee1e6227cc053643a2bd277f9579e52, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643422563398820950, guid: 3ee1e6227cc053643a2bd277f9579e52, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643422563398820950, guid: 3ee1e6227cc053643a2bd277f9579e52, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643422563398820950, guid: 3ee1e6227cc053643a2bd277f9579e52, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643422563398820950, guid: 3ee1e6227cc053643a2bd277f9579e52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643422563398820950, guid: 3ee1e6227cc053643a2bd277f9579e52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643422563398820950, guid: 3ee1e6227cc053643a2bd277f9579e52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3ee1e6227cc053643a2bd277f9579e52, type: 3}
+--- !u!4 &5896930517152378782 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6643422563398820950, guid: 3ee1e6227cc053643a2bd277f9579e52, type: 3}
+  m_PrefabInstance: {fileID: 1000985010967448520}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5896930517237938855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7c7aadb2c0976245aa51b9d752b53c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
