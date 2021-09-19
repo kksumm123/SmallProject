@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6643422563398820950}
   - component: {fileID: 6643422563398820951}
   - component: {fileID: 6643422563398820948}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MagneticAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
