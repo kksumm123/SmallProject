@@ -7,8 +7,7 @@ public class MoveCam : MonoBehaviour
     [SerializeField] float speed = 5f;
     void Update()
     {
-        // 2초간 쉬는 임시코드
-        if (Time.time < 2)
+        if (GameManager.Instance.GameState != GameManager.GameStateType.Playing)
             return;
 
         transform.Translate(speed * Time.deltaTime * Vector2.right);

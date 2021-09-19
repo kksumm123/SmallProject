@@ -4,15 +4,47 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static GameManager Instance;
+    void Awake() => Instance = this;
+
+    public enum GameStateType
     {
-        
+        None,
+        Ready,
+        Playing,
+        Menu,
+        GameOver,
+    }
+    GameStateType m_GameState;
+    public GameStateType GameState
+    {
+        get => m_GameState;
+        set
+        {
+            if (m_GameState == value)
+                return;
+
+            switch (value)
+            {
+                case GameStateType.Playing:
+                    Time.timeScale = 1;
+                    break;
+                case GameStateType.Ready:
+                case GameStateType.Menu:
+                case GameStateType.GameOver:
+                    Time.timeScale = 0;
+                    break;
+            }
+            print($"GameState : {m_GameState} -> {value}, TimeScale{Time.timeScale}");
+            m_GameState = value;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] float readyTime = 3;
+    IEnumerator Start()
     {
-        
+        GameState = GameStateType.Ready;
+        yield return new WaitForSeconds(readyTime);
+        GameState = GameStateType.Playing;
     }
 }
