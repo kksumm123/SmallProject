@@ -39,12 +39,31 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    [SerializeField] float readyTime = 3;
+    [SerializeField] int readyTime = 3;
     IEnumerator Start()
     {
         GameState = GameStateType.Ready;
+        ReadyUI.Instance.SetReady(readyTime);
         yield return new WaitForSeconds(readyTime);
         GameState = GameStateType.Playing;
+    }
+
+    void Update()
+    {
+        IsGameOver();
+    }
+
+    float gameOverDistance = 20;
+    void IsGameOver()
+    {
+        // 게임 오버 조건
+        // 1. 캐릭터가 멀어지면
+        if (Vector2.Distance(Camera.main.transform.position
+            , Player.Instance.transform.position) > gameOverDistance)
+        {
+            GameState = GameStateType.GameOver;
+            print("나중에 GameOverUI 호출하기");
+        }
     }
 
     public void AddScore(int value)
