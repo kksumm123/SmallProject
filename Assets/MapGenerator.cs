@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
+    int mapCount = 0;
+    [SerializeField] Transform mapParent;
     [SerializeField] float mapGapValue = 18;
     [SerializeField] List<Transform> maps = new List<Transform>();
     void Start()
