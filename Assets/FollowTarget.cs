@@ -10,10 +10,11 @@ public class FollowTarget : MonoBehaviour
         offsetX = Player.Instance.transform.position.x - transform.position.x;
     }
 
+    [SerializeField] float compensationSpeed = 20f;
     Vector3 nextPosition;
     void Update()
     {
         nextPosition.x = Player.Instance.transform.position.x - transform.position.x - offsetX;
-        transform.Translate(nextPosition * Time.deltaTime);
+        transform.Translate(compensationSpeed * Time.deltaTime * nextPosition);
     }
 }
