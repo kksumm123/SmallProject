@@ -14,6 +14,6 @@ public class MapGenerator : MonoBehaviour
 
     void Update()
     {
-        
+        // 맵 랜덤으로 선택, 복사 & 배치
     }
 }
