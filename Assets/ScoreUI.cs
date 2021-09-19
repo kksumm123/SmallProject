@@ -26,6 +26,7 @@ public class ScoreUI : MonoBehaviour
     {
         score += value;
         scoreValue.text = score.ToString();
+        Debug.LogWarning("DOTween.To() 증가하는 애니메이션 하도록");
 
         if (highScore < score)
         {

@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
             , Player.Instance.transform.position) > gameOverDistance)
         {
             GameState = GameStateType.GameOver;
-            print("나중에 GameOverUI 호출하기");
+            Debug.LogWarning("나중에 GameOverUI 호출하기");
         }
     }
 

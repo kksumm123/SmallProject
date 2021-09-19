@@ -9,6 +9,8 @@ Order In Layer
 Coin    50
 
 Player  100
+
+Debug.LogWarning 있는곳 수정하기 (예외처리 + DoTween)
  */
 public class Player : MonoBehaviour
 {
