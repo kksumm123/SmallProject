@@ -147,6 +147,8 @@ public class Player : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        if (Application.isPlaying == false)
+            return;
 
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position - new Vector3(0, footOffset, 0)
