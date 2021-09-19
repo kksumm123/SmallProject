@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Coin : MonoBehaviour
 {
+    [SerializeField] int coinValue = 10;
     Animator animator;
     CircleCollider2D circleCol;
     void Start()
@@ -20,6 +21,8 @@ public class Coin : MonoBehaviour
     float touchAnimationTime = 0.5f;
     IEnumerator CoinTouchCo()
     {
+        GameManager.Instance.AddScore(coinValue);
+
         circleCol.enabled = false;
         animator.Play("CoinTouch");
         yield return new WaitForSeconds(touchAnimationTime);

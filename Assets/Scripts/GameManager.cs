@@ -46,4 +46,9 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(readyTime);
         GameState = GameStateType.Playing;
     }
+
+    public void AddScore(int value)
+    {
+        ScoreUI.Instance.AddScore(value);
+    }
 }
