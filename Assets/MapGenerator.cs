@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] float mapGapValue = 18;
+    [SerializeField] List<Transform> maps = new List<Transform>();
     void Start()
     {
-        
+        if (maps.Count == 0)
+            Debug.LogError("¸ÊÀÌ ¾ø¾î!");
     }
 
-    // Update is called once per frame
     void Update()
     {
         
