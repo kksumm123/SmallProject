@@ -41,7 +41,10 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        
+        // 2초간 쉬는 임시코드
+        if (Time.time < 2)
+            return;
+
         StateUpdate();
         Move();
         Jump();
@@ -70,6 +73,12 @@ public class Player : MonoBehaviour
              , Vector2.down, IsGroundRayDistance, groundLayer);
         return hit.transform;
     }
+    bool IsHitWall()
+    {
+        var hit = Physics2D.Raycast(transform.position + new Vector3(boxCol.size.x, 0, 0)
+             , Vector2.right, IsGroundRayDistance, groundLayer);
+        return hit.transform;
+    }
     #endregion StateUpdate
 
     #region Move
@@ -77,6 +86,9 @@ public class Player : MonoBehaviour
     Vector3 nextPosition;
     void Move()
     {
+        if (IsHitWall())
+            return;
+
         nextPosition.x = Camera.main.transform.position.x - transform.position.x - offsetX;
         transform.Translate(compensationSpeed * Time.deltaTime * nextPosition);
     }
@@ -139,5 +151,7 @@ public class Player : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position - new Vector3(0, footOffset, 0)
             , Vector2.down * IsGroundRayDistance);
+        Gizmos.DrawRay(transform.position + new Vector3(boxCol.size.x, 0, 0)
+            , Vector2.right * IsGroundRayDistance);
     }
 }
