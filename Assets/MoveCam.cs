@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class MoveCam : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    [SerializeField] float speed = 5f;
     void Update()
     {
-        
+        transform.Translate(speed * Time.deltaTime * Vector2.right);
     }
 }
