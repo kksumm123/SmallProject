@@ -18,8 +18,8 @@ public class Player : MonoBehaviour
     Animator animator;
     BoxCollider2D boxCol;
     Rigidbody2D rigid;
-    [SerializeField] float speed = 5f;
     float gravityScale = 4;
+    float offsetX;
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
         rigid.gravityScale = gravityScale;
 
         State = StateType.Idle;
+        offsetX = Camera.main.transform.position.x - transform.position.x;
     }
 
     bool IsFixedUpdated = false;
@@ -40,10 +41,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        // 2초간 쉬는 임시코드
-        if (Time.time < 2)
-            return;
-
+        
         StateUpdate();
         Move();
         Jump();
@@ -75,9 +73,12 @@ public class Player : MonoBehaviour
     #endregion StateUpdate
 
     #region Move
+    [SerializeField] float compensationSpeed = 6f;
+    Vector3 nextPosition;
     void Move()
     {
-        transform.Translate(speed * Time.deltaTime * Vector2.right);
+        nextPosition.x = Camera.main.transform.position.x - transform.position.x - offsetX;
+        transform.Translate(compensationSpeed * Time.deltaTime * nextPosition);
     }
     #endregion Move
 
