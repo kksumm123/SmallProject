@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour
                 case GameStateType.Playing:
                     Time.timeScale = 1;
                     break;
-                case GameStateType.Ready:
                 case GameStateType.Menu:
                 case GameStateType.GameOver:
                     Time.timeScale = 0;
