@@ -8,21 +8,19 @@ using UnityEngine.UI;
 public class ReadyUI : MonoBehaviour
 {
     public static ReadyUI Instance;
-    void Awake() => Instance = this;
 
     CanvasGroup canvasGroup;
     Text readyText;
-    private void LinkComponent()
+    void Awake()
     {
+        Instance = this;
+
         canvasGroup = GetComponent<CanvasGroup>();
         readyText = GetComponentInChildren<Text>();
     }
 
     internal void SetReady(int readyTime)
     {
-        if (readyText == null)
-            LinkComponent();
-
         StartCoroutine(ReadyCo(readyTime));
     }
 

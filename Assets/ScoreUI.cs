@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,14 +8,15 @@ using UnityEngine.UI;
 public class ScoreUI : MonoBehaviour
 {
     public static ScoreUI Instance;
-    void Awake() => Instance = this;
 
     Text scoreValue;
     Text highScoreValue;
     int score;
     int highScore;
-    void Start()
+    void Awake()
     {
+        Instance = this;
+
         scoreValue = transform.Find("Current/Value").GetComponent<Text>();
         highScoreValue = transform.Find("High/Value").GetComponent<Text>();
 
@@ -22,11 +24,18 @@ public class ScoreUI : MonoBehaviour
         highScoreValue.text = highScore.ToString();
     }
 
+    int oldScore;
+    float scoreAnimationTime = 0.2f;
+    DG.Tweening.Core.TweenerCore<int, int, DG.Tweening.Plugins.Options.NoOptions> handle;
     internal void AddScore(int value)
     {
+        oldScore = score;
         score += value;
-        scoreValue.text = score.ToString();
-        Debug.LogWarning("DOTween.To() 증가하는 애니메이션 하도록");
+
+        if (handle != null)
+            handle.Kill();
+        handle = DOTween.To(() => oldScore, x => scoreValue.text = x.ToString(), score, scoreAnimationTime)
+            .SetUpdate(true).SetLink(gameObject);
 
         if (highScore < score)
         {
