@@ -12,7 +12,7 @@ public class ReadyUI : MonoBehaviour
 
     CanvasGroup canvasGroup;
     Text readyText;
-    void Start()
+    private void LinkComponent()
     {
         canvasGroup = GetComponent<CanvasGroup>();
         readyText = GetComponentInChildren<Text>();
@@ -20,6 +20,9 @@ public class ReadyUI : MonoBehaviour
 
     internal void SetReady(int readyTime)
     {
+        if (readyText == null)
+            LinkComponent();
+
         StartCoroutine(ReadyCo(readyTime));
     }
 
