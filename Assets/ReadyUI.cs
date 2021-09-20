@@ -33,6 +33,6 @@ public class ReadyUI : MonoBehaviour
         readyText.text = "G O ! ! !";
 
         DOTween.To(() => 1, x => canvasGroup.alpha = x, 0, 1)
-            .SetUpdate(true).SetLink();
+            .SetUpdate(true).SetLink(gameObject);
     }
 }
