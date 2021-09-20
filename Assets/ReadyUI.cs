@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,9 +10,11 @@ public class ReadyUI : MonoBehaviour
     public static ReadyUI Instance;
     void Awake() => Instance = this;
 
+    CanvasGroup canvasGroup;
     Text readyText;
     void Start()
     {
+        canvasGroup = GetComponent<CanvasGroup>();
         readyText = GetComponentInChildren<Text>();
     }
 
@@ -28,6 +31,8 @@ public class ReadyUI : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
         readyText.text = "G O ! ! !";
-        Debug.LogWarning("DOFade로 서서히 사라지게 하기");
+
+        DOTween.To(() => 1, x => canvasGroup.alpha = x, 0, 1)
+            .SetUpdate(true).SetLink();
     }
 }
