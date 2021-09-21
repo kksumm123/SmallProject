@@ -12,7 +12,7 @@ Player  100
 
 clear : StageClear 구현하기
 todo : 능력 일시적 활성화 구현하기
-
+todo : highScore 플레이어 프리퍼런스로 불러오기
  */
 public class Player : MonoBehaviour
 {
