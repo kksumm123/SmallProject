@@ -58,11 +58,12 @@ public class GameManager : MonoBehaviour
     {
         // 게임 오버 조건
         // 1. 캐릭터가 멀어지면
-        if (Vector2.Distance(Camera.main.transform.position
-            , Player.Instance.transform.position) > gameOverDistance)
+        //if (Vector2.Distance(Camera.main.transform.position
+        //    , Player.Instance.transform.position) > gameOverDistance)
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             GameState = GameStateType.GameOver;
-            Debug.LogWarning("나중에 GameOverUI 호출하기");
+            GameOverUI.Instance.ShowUI();
         }
     }
 
