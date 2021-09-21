@@ -813,6 +813,7 @@ GameObject:
   - component: {fileID: 1554923426}
   - component: {fileID: 1554923425}
   - component: {fileID: 1554923424}
+  - component: {fileID: 1554923428}
   m_Layer: 5
   m_Name: TabToContinue
   m_TagString: Untagged
@@ -911,6 +912,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554923422}
   m_CullTransparentMesh: 1
+--- !u!95 &1554923428
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554923422}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2abeddd1d8361c040982ec5c8c931f4c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1562218133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,7 +1020,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1574364271}
   - component: {fileID: 1574364272}
-  - component: {fileID: 1574364273}
   m_Layer: 5
   m_Name: GameOverUI
   m_TagString: Untagged
@@ -1041,18 +1060,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4c6001ea7268846874fca7d402cd5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!225 &1574364273
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1574364270}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!4 &1587985060 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8395977139621641853, guid: 263d80a4224443a4f9e87857d4b3dc0e, type: 3}
