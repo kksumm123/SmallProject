@@ -25,9 +25,19 @@ public class GameOverUI : MonoBehaviour
         localPos.y += 600;
         gameOverText.rectTransform.localPosition = localPos;
         gameOverText.rectTransform.DOLocalMoveY(0, 2)
-                                  .SetEase(Ease.OutBounce)
-                                  .SetUpdate(true)
-                                  .SetLink(gameObject)
-                                  .OnComplete(() => tabToContinueText.gameObject.SetActive(true));
+                    .SetEase(Ease.OutBounce)
+                    .SetUpdate(true)
+                    .SetLink(gameObject)
+                    .OnComplete(() => PunchScaleTabToContinue());
+    }
+
+    Vector3 punchScale = new Vector3(0.1f, 0.1f, 0.1f);
+    private void PunchScaleTabToContinue()
+    {
+        tabToContinueText.gameObject.SetActive(true);
+        tabToContinueText.rectTransform.DOPunchScale(punchScale, 1, 1, 0.5f)
+                         .SetLoops(-1, LoopType.Yoyo)
+                         .SetUpdate(true)
+                         .SetLink(tabToContinueText.gameObject);
     }
 }
