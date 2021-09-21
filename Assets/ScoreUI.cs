@@ -1,4 +1,6 @@
 using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -25,22 +27,30 @@ public class ScoreUI : MonoBehaviour
     }
 
     int oldScore;
+    int oldHighScore;
     float scoreAnimationTime = 0.2f;
-    DG.Tweening.Core.TweenerCore<int, int, DG.Tweening.Plugins.Options.NoOptions> handle;
+    TweenerCore<int, int, NoOptions> scoreHandle;
+    TweenerCore<int, int, NoOptions> highScoreHandle;
     internal void AddScore(int value)
     {
         oldScore = score;
         score += value;
-
-        if (handle != null)
-            handle.Kill();
-        handle = DOTween.To(() => oldScore, x => scoreValue.text = x.ToString(), score, scoreAnimationTime)
-            .SetUpdate(true).SetLink(gameObject);
+        KillAndAnimaitionText(scoreHandle, oldScore, scoreValue, score, scoreAnimationTime);
 
         if (highScore < score)
         {
+            oldHighScore = highScore;
             highScore = score;
-            highScoreValue.text = highScore.ToString();
+            KillAndAnimaitionText(highScoreHandle, oldHighScore, highScoreValue, highScore, scoreAnimationTime);
         }
+    }
+
+    void KillAndAnimaitionText(TweenerCore<int, int, NoOptions> handle
+        , int getter, Text text, int endValue, float duration)
+    {
+        if (handle != null)
+            handle.Kill();
+        handle = DOTween.To(() => getter, x => text.text = x.ToString(), endValue, duration)
+            .SetUpdate(true).SetLink(gameObject);
     }
 }

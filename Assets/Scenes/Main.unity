@@ -1154,6 +1154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2102179303}
   - component: {fileID: 2102179304}
+  - component: {fileID: 2102179305}
   m_Layer: 5
   m_Name: ReadyUI
   m_TagString: Untagged
@@ -1193,6 +1194,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 059423de5fa349a40bbc3dda63a033cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &2102179305
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102179302}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1079589021462458757
 PrefabInstance:
   m_ObjectHideFlags: 0
