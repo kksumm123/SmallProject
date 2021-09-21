@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,15 +13,21 @@ public class GameOverUI : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        transform.Find("RestartButton").GetComponent<Button>()
+                                        .onClick.AddListener(() => RestartButton());
+
         gameOverText = transform.Find("Text").GetComponent<Text>();
         tabToContinueText = transform.Find("TabToContinue").GetComponent<Text>();
+
+        isRestartable = false;
         tabToContinueText.gameObject.SetActive(false);
         gameObject.SetActive(false);
     }
-
     public void ShowUI()
     {
         gameObject.SetActive(true);
+        isRestartable = false;
+
         var localPos = gameOverText.rectTransform.localPosition;
         localPos.y += 600;
         gameOverText.rectTransform.localPosition = localPos;
@@ -31,9 +38,17 @@ public class GameOverUI : MonoBehaviour
                     .OnComplete(() => PunchScaleTabToContinue());
     }
 
+    bool isRestartable = false;
+    void RestartButton()
+    {
+        if (isRestartable == true)
+            GameManager.Instance.RestartGame();
+    }
+
     Vector3 punchScale = new Vector3(0.1f, 0.1f, 0.1f);
     private void PunchScaleTabToContinue()
     {
+        isRestartable = true;
         tabToContinueText.gameObject.SetActive(true);
         tabToContinueText.rectTransform.DOPunchScale(punchScale, 1, 1, 0.5f)
                          .SetLoops(-1, LoopType.Yoyo)
