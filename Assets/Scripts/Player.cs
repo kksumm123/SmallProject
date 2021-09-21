@@ -10,7 +10,9 @@ Coin    50
 
 Player  100
 
-Debug.LogWarning 있는곳 수정하기 (예외처리 + DoTween)
+StageClear 구현하기
+능력 일시적 활성화 구현하기
+
  */
 public class Player : MonoBehaviour
 {
