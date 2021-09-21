@@ -4,19 +4,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum GameStateType
+{
+    None,
+    Ready,
+    Playing,
+    Menu,
+    GameOver,
+    StageClear,
+}
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     void Awake() => Instance = this;
 
-    public enum GameStateType
-    {
-        None,
-        Ready,
-        Playing,
-        Menu,
-        GameOver,
-    }
     GameStateType m_GameState;
     public GameStateType GameState
     {
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
                     break;
                 case GameStateType.Menu:
                 case GameStateType.GameOver:
+                case GameStateType.StageClear:
                     Time.timeScale = 0;
                     break;
             }
@@ -41,6 +43,7 @@ public class GameManager : MonoBehaviour
             m_GameState = value;
         }
     }
+
 
     [SerializeField] int readyTime = 3;
     IEnumerator Start()
@@ -68,8 +71,14 @@ public class GameManager : MonoBehaviour
             , Player.Instance.transform.position) > gameOverDistance)
         {
             GameState = GameStateType.GameOver;
-            GameOverUI.Instance.ShowUI();
+            GameOverAndClearUI.Instance.ShowUI(GameStateType.GameOver);
         }
+    }
+
+    internal void StageEnd()
+    {
+        GameState = GameStateType.StageClear;
+        GameOverAndClearUI.Instance.ShowUI(GameStateType.StageClear);
     }
 
     internal void RestartGame()

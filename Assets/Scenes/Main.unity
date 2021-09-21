@@ -897,7 +897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e2459c3574b4b408ee3f5098df4bb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapCount: 30
+  mapCount: 2
   mapParent: {fileID: 1697812378}
   mapGapValue: 18
   maps:
@@ -1004,7 +1004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7254902, g: 0.23529412, b: 0.4648987, a: 1}
+  m_Color: {r: 0.7254902, g: 0.23529413, b: 0.4666667, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1142,7 +1142,7 @@ GameObject:
   - component: {fileID: 1574364271}
   - component: {fileID: 1574364272}
   m_Layer: 5
-  m_Name: GameOverUI
+  m_Name: GameOverAndClearUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1319,7 +1319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7254902, g: 0.23529412, b: 0.4648987, a: 1}
+  m_Color: {r: 0.7254902, g: 0.23529413, b: 0.4666667, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

@@ -5,10 +5,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameOverUI : MonoBehaviour
+public class GameOverAndClearUI : MonoBehaviour
 {
-    public static GameOverUI Instance;
-    Text gameOverText;
+
+    public static GameOverAndClearUI Instance;
+    readonly string gameOverString = "GAME OVER";
+    readonly string stageClearString = "Stage Clear";
+    Text noticeText;
     Text tabToContinueText;
     void Awake()
     {
@@ -16,22 +19,32 @@ public class GameOverUI : MonoBehaviour
         transform.Find("RestartButton").GetComponent<Button>()
                                         .onClick.AddListener(() => RestartButton());
 
-        gameOverText = transform.Find("Text").GetComponent<Text>();
+        noticeText = transform.Find("Text").GetComponent<Text>();
         tabToContinueText = transform.Find("TabToContinue").GetComponent<Text>();
 
         isRestartable = false;
         tabToContinueText.gameObject.SetActive(false);
         gameObject.SetActive(false);
     }
-    public void ShowUI()
+    public void ShowUI(GameStateType gameStateType)
     {
         gameObject.SetActive(true);
         isRestartable = false;
 
-        var localPos = gameOverText.rectTransform.localPosition;
+        switch (gameStateType)
+        {
+            case GameStateType.GameOver:
+                noticeText.text = gameOverString;
+                break;
+            case GameStateType.StageClear:
+                noticeText.text = stageClearString;
+                break;
+        }
+
+        var localPos = noticeText.rectTransform.localPosition;
         localPos.y += 600;
-        gameOverText.rectTransform.localPosition = localPos;
-        gameOverText.rectTransform.DOLocalMoveY(0, 2)
+        noticeText.rectTransform.localPosition = localPos;
+        noticeText.rectTransform.DOLocalMoveY(0, 2)
                     .SetEase(Ease.OutBounce)
                     .SetUpdate(true)
                     .SetLink(gameObject)

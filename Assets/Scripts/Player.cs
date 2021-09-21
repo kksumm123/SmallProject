@@ -10,8 +10,8 @@ Coin    50
 
 Player  100
 
-StageClear 구현하기
-능력 일시적 활성화 구현하기
+clear : StageClear 구현하기
+todo : 능력 일시적 활성화 구현하기
 
  */
 public class Player : MonoBehaviour
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.GameState != GameManager.GameStateType.Playing)
+        if (GameManager.Instance.GameState != GameStateType.Playing)
             return;
 
         StateUpdate();
