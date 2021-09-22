@@ -14,7 +14,7 @@ public class DashAbility : AbilityBase
 
     void Start()
     {
-        Deactivate();
+        DeActivate();
     }
 
     Vector3 dashPos = Vector3.zero;
@@ -41,7 +41,7 @@ public class DashAbility : AbilityBase
         enabled = true;
     }
 
-    public override void Deactivate()
+    public override void DeActivate()
     {
         SetPlayerDash(false);
         speed = 1;

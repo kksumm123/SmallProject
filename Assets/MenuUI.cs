@@ -11,14 +11,21 @@ public class MenuUI : MonoBehaviour
     void Start()
     {
         transform.Find("VolumeButton").GetComponent<Button>().onClick
-                                      .AddListener(() => OnClick());
+                                      .AddListener(() => VolumeButton());
+        transform.Find("ReplayButton").GetComponent<Button>().onClick
+                                      .AddListener(() => ReplayButton());
     }
 
-    public void OnClick()
+    public void VolumeButton()
     {
         if (VolumeUI.Instance.gameObject.activeSelf == false)
             VolumeUI.Instance.ShowUI();
         else
             VolumeUI.Instance.CloseUI();
+    }
+
+    private void ReplayButton()
+    {
+        GameManager.Instance.ReStartGame();
     }
 }

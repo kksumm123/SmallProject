@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
     void Menu()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-            MenuUI.Instance.OnClick();
+            MenuUI.Instance.VolumeButton();
     }
 
     float gameOverDistance = 20;
@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
         GameOverAndClearUI.Instance.ShowUI(GameStateType.StageClear);
     }
 
-    internal void RestartGame()
+    internal void ReStartGame()
     {
         SceneManager.LoadScene(0);
     }

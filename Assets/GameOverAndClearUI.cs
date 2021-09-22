@@ -55,7 +55,7 @@ public class GameOverAndClearUI : MonoBehaviour
     void RestartButton()
     {
         if (isRestartable == true)
-            GameManager.Instance.RestartGame();
+            GameManager.Instance.ReStartGame();
     }
 
     Vector3 punchScale = new Vector3(0.1f, 0.1f, 0.1f);

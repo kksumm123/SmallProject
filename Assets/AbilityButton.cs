@@ -56,6 +56,6 @@ public class AbilityButton : MonoBehaviour
 
         ability.Activate();
         yield return new WaitForSeconds(duration);
-        ability.Deactivate();
+        ability.DeActivate();
     }
 }

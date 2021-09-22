@@ -12,7 +12,7 @@ public class MagneticAbility : AbilityBase
     void Start()
     {
         circleCol = GetComponent<CircleCollider2D>();
-        Deactivate();
+        DeActivate();
     }
 
     Vector3 dir;
@@ -44,7 +44,7 @@ public class MagneticAbility : AbilityBase
         enabled = true;
         circleCol.enabled = true;
     }
-    public override void Deactivate()
+    public override void DeActivate()
     {
         enabled = false;
         circleCol.enabled = false;
