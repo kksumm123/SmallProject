@@ -36,11 +36,13 @@ public class DashAbility : AbilityBase
     }
     public override void Activate()
     {
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Ground"), true);
         speed = DashSpeed;
         enabled = true;
     }
     public override void Deactivate()
     {
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Ground"), false);
         speed = 1;
         enabled = false;
     }
