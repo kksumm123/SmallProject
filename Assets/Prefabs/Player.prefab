@@ -199,6 +199,7 @@ MonoBehaviour:
   compensationSpeed: 6
   maxJumpCount: 2
   jumpForceY: 700
+  downForceY: 700
 --- !u!1001 &1000985010967448520
 PrefabInstance:
   m_ObjectHideFlags: 0

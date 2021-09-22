@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
         StateUpdate();
         Move();
         Jump();
+        ForceDown();
     }
 
     #region StateUpdate
@@ -100,7 +101,7 @@ public class Player : MonoBehaviour
     #region Jump
     int currentJumpCount = 0;
     [SerializeField] int maxJumpCount = 2;
-    [SerializeField] float jumpForceY = 600;
+    [SerializeField] float jumpForceY = 700;
     void Jump()
     {
         if (IsGround() && IsFixedUpdated)
@@ -116,6 +117,20 @@ public class Player : MonoBehaviour
         }
     }
     #endregion Jump
+
+    #region 
+    [SerializeField] float downForceY = 700;
+    private void ForceDown()
+    {
+        if (GKD(KeyCode.S) && currentJumpCount > 0)
+        {
+            State = StateType.Fall;
+            IsFixedUpdated = false;
+            rigid.Sleep();
+            rigid.AddForce(new Vector2(0, -downForceY), ForceMode2D.Force);
+        }
+    }
+    #endregion ForceDown
 
     #region State
     enum StateType
