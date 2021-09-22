@@ -102,7 +102,7 @@ public class Player : MonoBehaviour
     Vector3 nextPosition;
     void Move()
     {
-        if (IsHitWall())
+        if (IsHitWall() && IsDash == false)
             return;
 
         nextPosition.x = Camera.main.transform.position.x - transform.position.x - offsetX;
@@ -184,6 +184,17 @@ public class Player : MonoBehaviour
     #endregion State
 
     #region Methods
+    bool m_isDash;
+    public bool IsDash
+    {
+        get => m_isDash;
+        set
+        {
+            m_isDash = value;
+            if (m_isDash == true)
+                currentJumpCount = 0;
+        }
+    }
     public void SleepRigidBody()
     {
         rigid.Sleep();
