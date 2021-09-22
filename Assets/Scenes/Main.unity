@@ -3157,7 +3157,7 @@ GameObject:
   - component: {fileID: 1619921241}
   - component: {fileID: 1619921240}
   m_Layer: 5
-  m_Name: Button
+  m_Name: VolumeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
