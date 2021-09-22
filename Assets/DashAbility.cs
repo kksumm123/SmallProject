@@ -54,5 +54,8 @@ public class DashAbility : AbilityBase
                                        LayerMask.NameToLayer("Ground"),
                                        _bool);
         Player.Instance.IsDash = _bool;
+
+        Color color = _bool == true ? Color.red : Color.white;
+        Player.Instance.GetComponentInChildren<Renderer>().material.color = color;
     }
 }

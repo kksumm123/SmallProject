@@ -44,7 +44,6 @@ public class AbilityButton : MonoBehaviour
         while (Time.time < endTime)
         {
             abilityImage.fillAmount = 1 - ((endTime - Time.time) / coolTime);
-            print(abilityImage.fillAmount);
             yield return null;
         }
         abilityImage.fillAmount = 1;
