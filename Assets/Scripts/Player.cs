@@ -98,7 +98,7 @@ public class Player : MonoBehaviour
     #endregion StateUpdate
 
     #region Move
-    [SerializeField] float compensationSpeed = 6f;
+    [SerializeField] float compensationSpeed = 8f;
     Vector3 nextPosition;
     void Move()
     {
@@ -117,6 +117,9 @@ public class Player : MonoBehaviour
     [SerializeField] float jumpForceY = 700;
     void Jump()
     {
+        if (IsDash)
+            return;
+
         if (IsGround() && IsFixedUpdated)
             currentJumpCount = 0;
 
