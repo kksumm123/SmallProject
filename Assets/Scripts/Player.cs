@@ -129,7 +129,7 @@ public class Player : MonoBehaviour
             currentJumpCount++;
             State = StateType.Jump;
             IsFixedUpdated = false;
-            rigid.Sleep();
+            SleepRigidBody();
             rigid.AddForce(new Vector2(0, jumpForceY), ForceMode2D.Force);
         }
     }
@@ -184,6 +184,11 @@ public class Player : MonoBehaviour
     #region Methods
     bool GK(KeyCode _keycode) => Input.GetKey(_keycode);
     bool GKD(KeyCode _keycode) => Input.GetKeyDown(_keycode);
+
+    public void SleepRigidBody()
+    {
+        rigid.Sleep();
+    }
     #endregion Methods
 
     private void OnDrawGizmos()

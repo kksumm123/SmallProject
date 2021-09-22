@@ -7,12 +7,11 @@ public class MagneticAbility : MonoBehaviour
     public static MagneticAbility Instance;
     void Awake() => Instance = this;
 
-    Transform PlayerTr;
+    Transform PlayerTr => Player.Instance.transform;
     CircleCollider2D circleCol;
     void Start()
     {
         circleCol = GetComponent<CircleCollider2D>();
-        PlayerTr = Player.Instance.transform;
         Deactivate();
     }
 
@@ -20,6 +19,9 @@ public class MagneticAbility : MonoBehaviour
     float magneticPower = 0.1f;
     void Update()
     {
+        if (GameManager.Instance.GameState != GameStateType.Playing)
+            return;
+
         foreach (var item in attachedCoins)
         {
             if (item.Key != null)
