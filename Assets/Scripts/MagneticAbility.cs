@@ -53,11 +53,11 @@ public class MagneticAbility : AbilityBase
         attachedCoins.Clear();
     }
 
-    class MagneticPower
+    public class MagneticPower
     {
         public float power = 0;
     }
-    Dictionary<Transform, MagneticPower> attachedCoins = new Dictionary<Transform, MagneticPower>();
+    public static Dictionary<Transform, MagneticPower> attachedCoins = new Dictionary<Transform, MagneticPower>();
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (enabled == false)

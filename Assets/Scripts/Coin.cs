@@ -22,6 +22,7 @@ public class Coin : MonoBehaviour
     IEnumerator CoinTouchCo()
     {
         GameManager.Instance.AddScore(coinValue);
+        MagneticAbility.attachedCoins.Remove(transform);
 
         circleCol.enabled = false;
         animator.Play("CoinTouch");
