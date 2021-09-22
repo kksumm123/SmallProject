@@ -10,9 +10,8 @@ public class MenuUI : MonoBehaviour
     void Awake() => Instance = this;
     void Start()
     {
-        transform.Find("Button")
-                 .GetComponent<Button>().onClick
-                 .AddListener(() => OnClick());
+        transform.Find("Button").GetComponent<Button>().onClick
+                                .AddListener(() => OnClick());
     }
 
     void OnClick()
