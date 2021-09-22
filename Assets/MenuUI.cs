@@ -17,6 +17,9 @@ public class MenuUI : MonoBehaviour
 
     void OnClick()
     {
-        throw new NotImplementedException();
+        if (VolumeUI.Instance.gameObject.activeSelf == false)
+            VolumeUI.Instance.ShowUI();
+        else
+            VolumeUI.Instance.CloseUI();
     }
 }
