@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 /*
 Order In Layer
 
@@ -13,7 +14,7 @@ Player  100
 clear : StageClear 구현하기
 clear : highScore 플레이어 프리퍼런스로 불러오기
 todo : 능력 일시적 활성화 구현하기
- */
+*/
 public class Player : MonoBehaviour
 {
     public static Player Instance;
@@ -24,8 +25,16 @@ public class Player : MonoBehaviour
     Rigidbody2D rigid;
     float gravityScale = 4;
     float offsetX;
+    Button jumpButton;
+    Button downButton;
     void Start()
     {
+        var controlKeyCanvas = GameObject.Find("ControlKeyCanvas");
+        jumpButton = controlKeyCanvas.transform.Find("ControlKey/JumpButton").GetComponent<Button>();
+        downButton = controlKeyCanvas.transform.Find("ControlKey/DownButton").GetComponent<Button>();
+        jumpButton.onClick.AddListener(() => JumpLogic());
+        downButton.onClick.AddListener(() => ForceDownLogic());
+
         animator = GetComponentInChildren<Animator>();
         boxCol = GetComponent<BoxCollider2D>();
         rigid = GetComponent<Rigidbody2D>();
@@ -99,7 +108,8 @@ public class Player : MonoBehaviour
     #endregion Move
 
     #region Jump
-    int currentJumpCount = 0;
+    [Header("점프")]
+    [SerializeField] int currentJumpCount = 0;
     [SerializeField] int maxJumpCount = 2;
     [SerializeField] float jumpForceY = 700;
     void Jump()
@@ -107,7 +117,13 @@ public class Player : MonoBehaviour
         if (IsGround() && IsFixedUpdated)
             currentJumpCount = 0;
 
-        if (GKD(KeyCode.W) && currentJumpCount < maxJumpCount)
+        if (GKD(KeyCode.W))
+            JumpLogic();
+    }
+
+    private void JumpLogic()
+    {
+        if (currentJumpCount < maxJumpCount)
         {
             currentJumpCount++;
             State = StateType.Jump;
@@ -122,7 +138,13 @@ public class Player : MonoBehaviour
     [SerializeField] float downForceY = 700;
     private void ForceDown()
     {
-        if (GKD(KeyCode.S) && currentJumpCount > 0)
+        if (GKD(KeyCode.S))
+            ForceDownLogic();
+    }
+
+    void ForceDownLogic()
+    {
+        if (currentJumpCount > 0)
         {
             State = StateType.Fall;
             IsFixedUpdated = false;
