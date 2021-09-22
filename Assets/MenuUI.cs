@@ -14,7 +14,7 @@ public class MenuUI : MonoBehaviour
                                 .AddListener(() => OnClick());
     }
 
-    void OnClick()
+    public void OnClick()
     {
         if (VolumeUI.Instance.gameObject.activeSelf == false)
             VolumeUI.Instance.ShowUI();

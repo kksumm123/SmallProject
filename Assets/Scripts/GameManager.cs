@@ -68,7 +68,14 @@ public class GameManager : MonoBehaviour
         if (GameState == GameStateType.GameOver)
             return;
 
+        Menu();
         IsGameOver();
+    }
+
+    void Menu()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            MenuUI.Instance.OnClick();
     }
 
     float gameOverDistance = 20;
