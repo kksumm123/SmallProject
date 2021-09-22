@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class GameOverAndClearUI : MonoBehaviour
 {
-
     public static GameOverAndClearUI Instance;
     readonly string gameOverString = "GAME OVER";
     readonly string stageClearString = "Stage Clear";
@@ -44,6 +43,7 @@ public class GameOverAndClearUI : MonoBehaviour
         var localPos = noticeText.rectTransform.localPosition;
         localPos.y += 600;
         noticeText.rectTransform.localPosition = localPos;
+        noticeText.rectTransform.DOKill();
         noticeText.rectTransform.DOLocalMoveY(0, 2)
                     .SetEase(Ease.OutBounce)
                     .SetUpdate(true)
