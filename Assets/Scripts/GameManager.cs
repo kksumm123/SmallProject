@@ -10,6 +10,7 @@ public enum GameStateType
     Ready,
     Playing,
     Menu,
+    MenuOut,
     GameOver,
     StageClear,
 }
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     void Awake() => Instance = this;
 
+    GameStateType preGameState;
     GameStateType m_GameState;
     public GameStateType GameState
     {
@@ -34,6 +36,13 @@ public class GameManager : MonoBehaviour
                     Time.timeScale = 1;
                     break;
                 case GameStateType.Menu:
+                    preGameState = m_GameState;
+                    Time.timeScale = 0;
+                    break;
+                case GameStateType.MenuOut:
+                    value = preGameState;
+                    Time.timeScale = 1;
+                    break;
                 case GameStateType.GameOver:
                 case GameStateType.StageClear:
                     Time.timeScale = 0;

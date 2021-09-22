@@ -30,6 +30,7 @@ public class VolumeUI : MonoBehaviour
 
     public void ShowUI()
     {
+        GameManager.Instance.GameState = GameStateType.Menu;
         gameObject.SetActive(true);
 
         var localPos = transform.localPosition;
@@ -43,6 +44,7 @@ public class VolumeUI : MonoBehaviour
     }
     public void CloseUI()
     {
+        GameManager.Instance.GameState = GameStateType.MenuOut;
         gameObject.SetActive(false);
     }
 }

@@ -817,6 +817,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 398307115}
+  - component: {fileID: 398307116}
   m_Layer: 5
   m_Name: MenuUI
   m_TagString: Untagged
@@ -844,6 +845,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &398307116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398307114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bae10ff95031f7b40ab435a6858e3beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &445177352
 GameObject:
   m_ObjectHideFlags: 0
@@ -853,6 +866,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 445177353}
+  - component: {fileID: 445177354}
   m_Layer: 5
   m_Name: VolumeUI
   m_TagString: Untagged
@@ -875,13 +889,25 @@ RectTransform:
   - {fileID: 1693149959}
   - {fileID: 687130418}
   m_Father: {fileID: 1880224643}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &445177354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445177352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 702b585e4297b73488fc92da67c4ca58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &453755603
 GameObject:
   m_ObjectHideFlags: 0
@@ -2967,7 +2993,7 @@ RectTransform:
   - {fileID: 1780226629}
   - {fileID: 1554923423}
   m_Father: {fileID: 1880224643}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3816,9 +3842,9 @@ RectTransform:
   m_Children:
   - {fileID: 196179873}
   - {fileID: 2102179303}
-  - {fileID: 1574364271}
-  - {fileID: 398307115}
   - {fileID: 445177353}
+  - {fileID: 398307115}
+  - {fileID: 1574364271}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
