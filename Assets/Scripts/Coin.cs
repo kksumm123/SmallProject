@@ -21,6 +21,7 @@ public class Coin : MonoBehaviour
     float touchAnimationTime = 0.5f;
     IEnumerator CoinTouchCo()
     {
+        CoinSFXPlayer.Instance.PlaySound();
         GameManager.Instance.AddScore(coinValue);
         MagneticAbility.attachedCoins.Remove(transform);
 
