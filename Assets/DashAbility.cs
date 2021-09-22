@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DashAbility : MonoBehaviour
+public class DashAbility : AbilityBase
 {
+    public float speed = 1;
+    public float DashSpeed = 3;
+    Transform PlayerTr => Player.Instance.transform;
+
     public static DashAbility Instance;
     void Awake() => Instance = this;
 
-    [SerializeField] float speed = 18;
-    Transform PlayerTr => Player.Instance.transform;
+
     void Start()
     {
         Deactivate();
@@ -23,15 +26,22 @@ public class DashAbility : MonoBehaviour
         Player.Instance.SleepRigidBody();
         dashPos = PlayerTr.position;
         dashPos.y = dashPos.z = 0;
+        PlayerTr.position = dashPos;
         PlayerTr.Translate(speed * Time.deltaTime * Vector3.right);
     }
 
-    public void Activate()
+    public override AbilityType GetAbilityType()
     {
+        return AbilityType.Dash;
+    }
+    public override void Activate()
+    {
+        speed = DashSpeed;
         enabled = true;
     }
-    public void Deactivate()
+    public override void Deactivate()
     {
+        speed = 1;
         enabled = false;
     }
 }

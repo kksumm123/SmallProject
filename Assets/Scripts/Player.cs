@@ -118,7 +118,7 @@ public class Player : MonoBehaviour
         if (IsGround() && IsFixedUpdated)
             currentJumpCount = 0;
 
-        if (GKD(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W))
             JumpLogic();
     }
 
@@ -139,7 +139,7 @@ public class Player : MonoBehaviour
     [SerializeField] float downForceY = 700;
     private void ForceDown()
     {
-        if (GKD(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S))
             ForceDownLogic();
     }
 
@@ -182,9 +182,6 @@ public class Player : MonoBehaviour
     #endregion State
 
     #region Methods
-    bool GK(KeyCode _keycode) => Input.GetKey(_keycode);
-    bool GKD(KeyCode _keycode) => Input.GetKeyDown(_keycode);
-
     public void SleepRigidBody()
     {
         rigid.Sleep();

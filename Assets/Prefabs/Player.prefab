@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   compensationSpeed: 6
+  currentJumpCount: 0
   maxJumpCount: 2
   jumpForceY: 700
   downForceY: 700
@@ -254,6 +255,10 @@ PrefabInstance:
     - target: {fileID: 6643422563398820950, guid: 3ee1e6227cc053643a2bd277f9579e52, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643422563398820951, guid: 3ee1e6227cc053643a2bd277f9579e52, type: 3}
+      propertyPath: m_Radius
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ee1e6227cc053643a2bd277f9579e52, type: 3}

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagneticAbility : MonoBehaviour
+public class MagneticAbility : AbilityBase
 {
     public static MagneticAbility Instance;
     void Awake() => Instance = this;
@@ -16,7 +16,7 @@ public class MagneticAbility : MonoBehaviour
     }
 
     Vector3 dir;
-    float magneticPower = 0.1f;
+    float magneticPower = 0.3f;
     void Update()
     {
         if (GameManager.Instance.GameState != GameStateType.Playing)
@@ -24,23 +24,27 @@ public class MagneticAbility : MonoBehaviour
 
         foreach (var item in attachedCoins)
         {
-            if (item.Key != null)
-            {
-                dir = PlayerTr.position - item.Key.position;
-                dir.Normalize();
-                item.Value.power += magneticPower;
+            if (item.Key == null)
+                return;
 
-                item.Key.Translate(item.Value.power * Time.deltaTime * dir);
-            }
+            dir = PlayerTr.position - item.Key.position;
+            dir.Normalize();
+            item.Value.power += magneticPower;
+
+            item.Key.Translate(item.Value.power * Time.deltaTime * dir);
         }
     }
 
-    public void Activate()
+    public override AbilityType GetAbilityType()
+    {
+        return AbilityType.Magnetic;
+    }
+    public override void Activate()
     {
         enabled = true;
         circleCol.enabled = true;
     }
-    public void Deactivate()
+    public override void Deactivate()
     {
         enabled = false;
         circleCol.enabled = false;
@@ -54,15 +58,14 @@ public class MagneticAbility : MonoBehaviour
     Dictionary<Transform, MagneticPower> attachedCoins = new Dictionary<Transform, MagneticPower>();
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (enabled == true)
+        if (enabled == false)
+            return;
+
+        if (collision.CompareTag("Coin"))
         {
-            if (collision.CompareTag("Coin"))
-            {
-                if (attachedCoins.ContainsKey(collision.transform))
-                    return;
-                else
-                    attachedCoins[collision.transform] = new MagneticPower();
-            }
+            if (attachedCoins.ContainsKey(collision.transform))
+                return;
+            attachedCoins[collision.transform] = new MagneticPower();
         }
     }
 }

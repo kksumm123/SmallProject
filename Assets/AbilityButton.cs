@@ -3,12 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+public enum AbilityType
+{
+    None,
+    Magnetic,
+    Dash,
+}
 
 public class AbilityButton : MonoBehaviour
 {
+    public AbilityType abilityType;
     Image abilityImage;
     void Start()
     {
+        if (abilityType == AbilityType.None)
+            Debug.LogError($"{transform} : abilityType 설정해줘야해 !");
+
         abilityImage = GetComponent<Image>();
         GetComponent<Button>().onClick.AddListener(() => UseAbility());
     }
@@ -43,8 +53,10 @@ public class AbilityButton : MonoBehaviour
     [SerializeField] float duration = 3;
     IEnumerator UseAbilityCo()
     {
-        MagneticAbility.Instance.Activate();
+        AbilityBase ability = abilityType.GetAblity();
+
+        ability.Activate();
         yield return new WaitForSeconds(duration);
-        MagneticAbility.Instance.Deactivate();
+        ability.Deactivate();
     }
 }

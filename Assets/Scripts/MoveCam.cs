@@ -10,6 +10,6 @@ public class MoveCam : MonoBehaviour
         if (GameManager.Instance.GameState != GameStateType.Playing)
             return;
 
-        transform.Translate(speed * Time.deltaTime * Vector2.right);
+        transform.Translate(DashAbility.Instance.speed * speed * Time.deltaTime * Vector2.right);
     }
 }
