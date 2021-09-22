@@ -15,6 +15,7 @@ public class ScoreUI : MonoBehaviour
     Text highScoreValue;
     int score;
     int highScore;
+    readonly string highScoreKey = "HighScore";
     void Awake()
     {
         Instance = this;
@@ -22,8 +23,14 @@ public class ScoreUI : MonoBehaviour
         scoreValue = transform.Find("Current/Value").GetComponent<Text>();
         highScoreValue = transform.Find("High/Value").GetComponent<Text>();
 
+        highScore = PlayerPrefs.GetInt(highScoreKey);
+
         scoreValue.text = score.ToString();
         highScoreValue.text = highScore.ToString();
+    }
+    void OnDestroy()
+    {
+        PlayerPrefs.SetInt(highScoreKey, highScore);
     }
 
     int oldScore;
