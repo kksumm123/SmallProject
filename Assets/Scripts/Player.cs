@@ -13,7 +13,8 @@ Player  100
 
 clear : StageClear 구현하기
 clear : highScore 플레이어 프리퍼런스로 불러오기
-todo : 능력 일시적 활성화 구현하기
+clear : 능력 일시적 활성화 구현하기
+todo : 돌진능력 구현하기 
 */
 public class Player : MonoBehaviour
 {

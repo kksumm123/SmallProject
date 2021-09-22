@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class MagneticAbility : MonoBehaviour
 {
+    public static MagneticAbility Instance;
+    void Awake() => Instance = this;
+
     Transform PlayerTr;
     CircleCollider2D circleCol;
     void Start()
     {
         circleCol = GetComponent<CircleCollider2D>();
         PlayerTr = Player.Instance.transform;
+        Deactivate();
     }
 
     Vector3 dir;
@@ -29,6 +33,18 @@ public class MagneticAbility : MonoBehaviour
         }
     }
 
+    public void Activate()
+    {
+        enabled = true;
+        circleCol.enabled = true;
+    }
+    public void Deactivate()
+    {
+        enabled = false;
+        circleCol.enabled = false;
+        attachedCoins.Clear();
+    }
+
     class MagneticPower
     {
         public float power = 0;
@@ -36,12 +52,15 @@ public class MagneticAbility : MonoBehaviour
     Dictionary<Transform, MagneticPower> attachedCoins = new Dictionary<Transform, MagneticPower>();
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Coin"))
+        if (enabled == true)
         {
-            if (attachedCoins.ContainsKey(collision.transform))
-                return;
-            else
-                attachedCoins[collision.transform] = new MagneticPower();
+            if (collision.CompareTag("Coin"))
+            {
+                if (attachedCoins.ContainsKey(collision.transform))
+                    return;
+                else
+                    attachedCoins[collision.transform] = new MagneticPower();
+            }
         }
     }
 }
