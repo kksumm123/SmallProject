@@ -25,7 +25,7 @@ public class MagneticAbility : AbilityBase
         foreach (var item in attachedCoins)
         {
             if (item.Key == null)
-                return;
+                continue;
 
             dir = PlayerTr.position - item.Key.position;
             dir.Normalize();
@@ -41,11 +41,13 @@ public class MagneticAbility : AbilityBase
     }
     public override void Activate()
     {
+        print("자석 온");
         enabled = true;
         circleCol.enabled = true;
     }
     public override void Deactivate()
     {
+        print("자석 끝");
         enabled = false;
         circleCol.enabled = false;
         attachedCoins.Clear();
