@@ -19,13 +19,10 @@ public class VolumeUI : MonoBehaviour
         sfxSlider = transform.Find("SFX/Slider").GetComponent<Slider>();
         bgmPlayer = GameObject.Find("BGMPlayer").GetComponent<AudioSource>();
         coinSFXPlayer = GameObject.Find("CoinSFXPlayer").GetComponent<AudioSource>();
-        CloseUI();
-    }
 
-    void Update()
-    {
-        bgmPlayer.volume = bgmSlider.value;
-        coinSFXPlayer.volume = sfxSlider.value;
+        bgmSlider.onValueChanged.AddListener((x) => bgmPlayer.volume = x);
+        sfxSlider.onValueChanged.AddListener((x) => coinSFXPlayer.volume = x);
+        CloseUI();
     }
 
     public void ShowUI()
