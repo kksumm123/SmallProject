@@ -4,14 +4,13 @@ using System.Linq;
 using UnityEngine;
 public static class AbilityTable
 {
-    public static Dictionary<AbilityType, AbilityBase> abilityMap = new Dictionary<AbilityType, AbilityBase>()
-        {
-            {AbilityType.Magnetic, MagneticAbility.Instance}, 
-            {AbilityType.Dash, DashAbility.Instance}
-        };
-
+    public static Dictionary<AbilityType, AbilityBase> abilityMap = new Dictionary<AbilityType, AbilityBase>();
     public static AbilityBase GetAblity(this AbilityType abilityType)
-        => abilityMap[abilityType];
+    {
+        abilityMap[AbilityType.Magnetic] = MagneticAbility.Instance;
+        abilityMap[AbilityType.Dash] = DashAbility.Instance;
+        return abilityMap[abilityType];
+    }
 }
 
 public abstract class AbilityBase : MonoBehaviour
