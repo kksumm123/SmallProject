@@ -9,6 +9,8 @@ public class VolumeUI : MonoBehaviour
     public static VolumeUI Instance;
     void Awake() => Instance = this;
 
+    string bgmSliderKey = "BGMSliderKey";
+    string sfxSliderKey = "SFXSliderKey";
     Slider bgmSlider;
     Slider sfxSlider;
     AudioSource bgmPlayer;
@@ -19,10 +21,18 @@ public class VolumeUI : MonoBehaviour
         sfxSlider = transform.Find("SFX/Slider").GetComponent<Slider>();
         bgmPlayer = GameObject.Find("BGMPlayer").GetComponent<AudioSource>();
         coinSFXPlayer = GameObject.Find("CoinSFXPlayer").GetComponent<AudioSource>();
-
         bgmSlider.onValueChanged.AddListener((x) => bgmPlayer.volume = x);
         sfxSlider.onValueChanged.AddListener((x) => coinSFXPlayer.volume = x);
+
+        bgmSlider.value = PlayerPrefs.GetFloat(bgmSliderKey, 0.6f);
+        sfxSlider.value = PlayerPrefs.GetFloat(sfxSliderKey, 1f);
+
         CloseUI();
+    }
+    private void OnDestroy()
+    {
+        PlayerPrefs.SetFloat(bgmSliderKey, bgmSlider.value);
+        PlayerPrefs.SetFloat(sfxSliderKey, sfxSlider.value);
     }
 
     public void ShowUI()
